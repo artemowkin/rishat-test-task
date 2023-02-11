@@ -1,5 +1,6 @@
 from django.http.request import HttpRequest
 from django.http.response import JsonResponse
+from django.urls import reverse
 
 from items.services import ItemStorage
 from orders.services import get_order_with_all_payment_data
@@ -29,5 +30,5 @@ async def buy_order(request: HttpRequest, order_id: int) -> JsonResponse:
     """
     payment = Payment()
     buying_order = await get_order_with_all_payment_data(order_id)
-    session_id = payment.buy_order(buying_order, request.build_absolute_uri('/'))
+    session_id = payment.buy_order(buying_order, request.build_absolute_uri(buying_order.order.get_absolute_url()))
     return JsonResponse({'session_id': session_id})
