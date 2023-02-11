@@ -1,0 +1,25 @@
+{% extends './_base.html' %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block content %}
+<div class="item">
+    <div class="item__name">{{ item.name }}</div>
+    <div class="item__description">{{ item.description }}</div>
+    <div class="item__price">Price: {{ item.price }}</div>
+    <button id="buy-button">Buy</button>
+    <script>
+        const stripe = Stripe('pk_test_51GrFfbFNhT9cj5qedPZbpX4yVJS2ZrTY1YovW3iZxI2ri2LG61qJWkb4FzOVdiPHbKsh60M2HWcRaiKkeffbHylp00yzx7bKhq');
+        const buyButton = document.getElementById('buy-button');
+        buyButton.addEventListener('click', async () => {
+            const response = await fetch('/buy/item/{{ item.id }}', {method: 'GET'})
+            const json = await response.json()
+            stripe.redirectToCheckout({ sessionId: json.session_id })
+        });
+    </script>
+</div>
+{% endblock %}

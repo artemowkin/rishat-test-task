@@ -1,0 +1,23 @@
+[tool.pdm]
+
+[project]
+name = ""
+version = ""
+description = ""
+authors = [
+    {name = "artemowkin", email = "artyom.groshev2017@gmail.com"},
+]
+dependencies = [
+    "uvicorn>=0.20.0",
+    "django>=4.1.6",
+    "stripe>=5.1.1",
+    "pydantic>=1.10.4",
+    "psycopg2-binary>=2.9.5",
+    "python-dotenv>=0.21.1",
+]
+requires-python = ">=3.9"
+license = {text = "MIT"}
+
+[tool.pdm.scripts]
+dev = "python manage.py runserver 0.0.0.0:8000"
+docker-dev = "docker compose -f docker-compose-dev.yml up --build"

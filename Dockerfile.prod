@@ -1,0 +1,6 @@
+FROM python:3.10
+WORKDIR /code/
+COPY pyproject.toml pdm.lock /code/
+RUN pip install -U pdm
+RUN pdm install
+COPY ./ /code
