@@ -74,12 +74,14 @@ class Payment:
         :param tax: Данные о налоге
         :returns: ID созданного налога
         """
-        tax = stripe.TaxRate.create(
-            display_name=tax.name,
-            inclusive=False,
-            percentage=tax.percentage,
-            description=tax.description
-        )
+        tax_data = {
+            'display_name': tax.name,
+            'inclusive': False,
+            'percentage': tax.percentage,
+            'description': tax.description or None
+        }
+        tax_data = {k: v for k, v in tax_data.items() if v is not None}
+        tax = stripe.TaxRate.create(**tax_data)
         return tax['id']
 
     def create_coupon(self, coupon: CouponIn) -> str:
