@@ -73,6 +73,6 @@ docker compose -f docker-compose-prod.yml up --build -d
 
 > Для этой команды необходим `.env.prod` файл
 
-# Автор
+## Автор
 
 - Лоскан Артем - [`artemowkin`](https://github.com/artemowkin)
