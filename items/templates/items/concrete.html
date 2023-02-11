@@ -10,7 +10,7 @@
 <div class="item">
     <div class="item__name">{{ item.name }}</div>
     <div class="item__description">{{ item.description }}</div>
-    <div class="item__price">Price: {{ item.price }}</div>
+    <div class="item__price">Price: {{ item.price }}{{ item.get_currency_display }}</div>
     <button id="buy-button">Buy</button>
     <script>
         const stripe = Stripe('pk_test_51GrFfbFNhT9cj5qedPZbpX4yVJS2ZrTY1YovW3iZxI2ri2LG61qJWkb4FzOVdiPHbKsh60M2HWcRaiKkeffbHylp00yzx7bKhq');

@@ -11,7 +11,7 @@
 <div class="item">
     <div class="item__name">{{ item.name }}</div>
     <div class="item__description">{{ item.description }}</div>
-    <div class="item__price">Price: {{ item.price }}</div>
+    <div class="item__price">Price: {{ item.price }}{{ item.get_currency_display }}</div>
 </div>
 {% endfor %}
 <button id="buy-button">Buy</button>
