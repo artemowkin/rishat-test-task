@@ -29,7 +29,7 @@ class Payment:
                 'currency': item.currency,
                 'unit_amount': int(float(item.price) * 100),
             },
-            'tax_rates': [tax.stripe_id for tax in taxes],
+            'tax_rates': [tax.stripe_id for tax in taxes] if taxes else [],
             'quantity': 1
         }
 
